@@ -1,0 +1,13 @@
+main(a, b, c, d, e) {
+    if (true) {
+        if (false || false) {
+            c = 1;
+        } else {}
+    }
+    while (false) {
+        while (true) {
+            c = 2;
+        }
+    }
+    return c;
+}

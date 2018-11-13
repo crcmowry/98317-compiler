@@ -1,0 +1,31 @@
+!_TAG_FILE_SORTED	2	/0=unsorted, 1=sorted, 2=foldcase/
+A	/home/crcm/College/sophomore/98317/10-compilation/Compile.sml	/^  structure A = Assembly$/;"	r	language:SML
+arith	/home/crcm/College/sophomore/98317/10-compilation/Compile.sml	/^      fun arith (x : string) (a1 : V.aexp, a2 : V.aexp) (oper : arith) : A.instruction list =$/;"	f	language:SML
+arith	/home/crcm/College/sophomore/98317/10-compilation/Compile.sml	/^  datatype arith = ADD | SUB | MUL | DIV | EQ | LT$/;"	t	language:SML
+c	/home/crcm/College/sophomore/98317/10-compilation/Compile.sml	/^  local val c = ref 0 in$/;"	v	language:SML
+cj	/home/crcm/College/sophomore/98317/10-compilation/Compile.sml	/^                                   val cj = A.IF (A.Var x, l1, l2)$/;"	v	language:SML
+compile	/home/crcm/College/sophomore/98317/10-compilation/Compile.sml	/^  fun compile (params, body) =$/;"	f	language:SML
+compile	/home/crcm/College/sophomore/98317/10-compilation/Compile.sml	/^  val compile : VSIMPL.program -> Assembly.program$/;"	v	language:SML
+Compile	/home/crcm/College/sophomore/98317/10-compilation/Compile.sml	/^structure Compile : sig$/;"	r	language:SML
+compile'	/home/crcm/College/sophomore/98317/10-compilation/Compile.sml	/^      fun compile' (cmds : V.cmd list) : A.instruction list =$/;"	f	language:SML
+compile_arithmetic	/home/crcm/College/sophomore/98317/10-compilation/Compile.sml	/^      and compile_arithmetic (x : string) (ae : V.aexp) : A.instruction list =$/;"	v	language:SML
+compile_boolean	/home/crcm/College/sophomore/98317/10-compilation/Compile.sml	/^      fun compile_boolean (x : string) (be : V.bexp) : A.instruction list =$/;"	f	language:SML
+fresh_label	/home/crcm/College/sophomore/98317/10-compilation/Compile.sml	/^    fun fresh_label () = (c := !c + 1; !c)$/;"	f	language:SML
+fresh_var	/home/crcm/College/sophomore/98317/10-compilation/Compile.sml	/^  fun fresh_var () = "%t" ^ Int.toString (fresh_label ())$/;"	f	language:SML
+i	/home/crcm/College/sophomore/98317/10-compilation/Compile.sml	/^                 val i = (case c of$/;"	v	language:SML
+i	/home/crcm/College/sophomore/98317/10-compilation/Compile.sml	/^                 val i = compile_boolean t b1$/;"	v	language:SML
+i1	/home/crcm/College/sophomore/98317/10-compilation/Compile.sml	/^                                   val i1 = compile' c1$/;"	v	language:SML
+i1	/home/crcm/College/sophomore/98317/10-compilation/Compile.sml	/^          val i1 = compile_arithmetic s1 a1$/;"	v	language:SML
+i2	/home/crcm/College/sophomore/98317/10-compilation/Compile.sml	/^                                   val i2 = compile' c2$/;"	v	language:SML
+i2	/home/crcm/College/sophomore/98317/10-compilation/Compile.sml	/^          val i2 = compile_arithmetic s2 a2$/;"	v	language:SML
+ib	/home/crcm/College/sophomore/98317/10-compilation/Compile.sml	/^                                   val ib = compile_boolean x b$/;"	v	language:SML
+is	/home/crcm/College/sophomore/98317/10-compilation/Compile.sml	/^                 val is = compile' cs$/;"	v	language:SML
+l1	/home/crcm/College/sophomore/98317/10-compilation/Compile.sml	/^                                   val l1 = fresh_label ()$/;"	v	language:SML
+l2	/home/crcm/College/sophomore/98317/10-compilation/Compile.sml	/^                                   val l2 = fresh_label ()$/;"	v	language:SML
+s1	/home/crcm/College/sophomore/98317/10-compilation/Compile.sml	/^          val s1 = fresh_var ()$/;"	v	language:SML
+s2	/home/crcm/College/sophomore/98317/10-compilation/Compile.sml	/^          val s2 = fresh_var ()$/;"	v	language:SML
+t	/home/crcm/College/sophomore/98317/10-compilation/Compile.sml	/^                 val t = fresh_var ()$/;"	v	language:SML
+t1	/home/crcm/College/sophomore/98317/10-compilation/Compile.sml	/^          val (t1, t2) = (A.Var s1, A.Var s2)$/;"	v	language:SML
+V	/home/crcm/College/sophomore/98317/10-compilation/Compile.sml	/^  structure V = VSIMPL $/;"	r	language:SML
+x	/home/crcm/College/sophomore/98317/10-compilation/Compile.sml	/^                                   val x = fresh_var ()$/;"	v	language:SML
+x	/home/crcm/College/sophomore/98317/10-compilation/Compile.sml	/^                                   val x = fresh_var ()$/;"	v	language:SML

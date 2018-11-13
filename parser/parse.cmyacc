@@ -1,0 +1,85 @@
+sml
+name VSIMPLParseFun
+
+terminal IDENT of string
+terminal NUMBER of int
+
+terminal KWMAIN
+terminal KWIF
+terminal KWELSE
+terminal KWWHILE
+terminal KWRETURN
+terminal KWTRUE
+terminal KWFALSE
+
+terminal LBRACE
+terminal RBRACE
+terminal LPAREN
+terminal RPAREN
+
+terminal LAND precl 5
+terminal LOR precl 4
+terminal LNOT precr 14
+
+terminal LESS precl 10
+terminal GREATER precl 10
+terminal EQUAL precl 9
+terminal NOTEQUAL precl 9
+
+terminal ASSIGN precr 2
+terminal SEMI
+terminal COMMA precl 1
+
+terminal PLUS precr 12
+terminal MINUS precr 12
+terminal TIMES precr 13
+terminal DIVIDE precr 13
+
+nonterminal Aexp : aexp =
+    LPAREN 1:Aexp RPAREN => aexp_id
+    1:IDENT => aexp_ident
+    1:NUMBER => aexp_number
+    1:Aexp PLUS 2:Aexp => aexp_plus
+    1:Aexp MINUS 2:Aexp => aexp_minus
+    1:Aexp TIMES 2:Aexp => aexp_times
+    1:Aexp DIVIDE 2:Aexp => aexp_divide
+
+nonterminal Bexp : bexp =
+    LPAREN 1:Bexp RPAREN => bexp_id
+    KWTRUE => bexp_true
+    KWFALSE => bexp_false
+    LNOT 1:Bexp => bexp_not
+    1:Bexp LAND 2:Bexp => bexp_and
+    1:Bexp LOR 2:Bexp => bexp_or
+    1:Aexp EQUAL 2:Aexp => bexp_equal
+    1:Aexp NOTEQUAL 2:Aexp => bexp_notequal
+    1:Aexp LESS 2:Aexp => bexp_less
+    1:Aexp GREATER 2:Aexp => bexp_greater
+
+nonterminal Cmd : cmd =
+    1:IDENT ASSIGN 2:Aexp SEMI => cmd_assign
+    KWIF 1:Bexp 2:Cmds KWELSE 3:Cmds => cmd_if_else
+    KWIF 1:Bexp 2:Cmds => cmd_if
+    KWWHILE 1:Bexp 2:Cmds => cmd_while
+    KWRETURN 1:Aexp SEMI => cmd_return
+
+nonterminal Cmds : cmdlist =
+    LBRACE 1:Cmdlist RBRACE => cmds
+    LBRACE RBRACE => cmds_empty
+
+nonterminal Cmdlist : cmdlist =
+    1:Cmd => cmd_one
+    1:Cmd 2:Cmdlist => cmd_cons
+
+nonterminal Program : program =
+    KWMAIN 1:Args 2:Cmds => main
+
+nonterminal Args : identlist =
+    LPAREN RPAREN => args_empty
+    LPAREN 1:Arglist RPAREN => args
+
+nonterminal Arglist : identlist =
+    1:IDENT => args_one
+    1:IDENT COMMA 2:Arglist => args_cons
+
+start Program

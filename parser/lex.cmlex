@@ -1,0 +1,47 @@
+sml
+name VSIMPLLexFun
+alphabet 128
+
+set alpha = (range 'a 'z 'A 'Z)
+set digit = (range '0 '9)
+set alphanumeric = (| alpha digit '_ '')
+set white = (| 32 9 10 12 13)  /* space, tab, lf, ff, cr */
+
+function lexmain : t =
+    eos => eof
+    (+ white) => skip
+
+    "main" => kwmain
+    "if" => kwif
+    "else" => kwelse
+    "while" => kwwhile
+    "return" => kwreturn
+    "true" => kwtrue
+    "false" => kwfalse
+
+    (seq alpha (* alphanumeric)) => ident
+    (seq (? '~) (+ digit)) => number
+    '{ => lbrace
+    '} => rbrace
+    '( => lparen
+    ') => rparen
+
+    "&&" => land
+    "||" => lor
+    '! => lnot
+
+    '< => less
+    '> => greater
+    "==" => equal
+    "!=" => notequal
+
+    '= => assign
+    '; => semi
+    ', => comma
+
+    '+ => plus
+    '- => minus
+    '* => times
+    '/ => divide
+
+    epsilon => error

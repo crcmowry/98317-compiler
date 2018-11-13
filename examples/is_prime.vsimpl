@@ -1,0 +1,10 @@
+main(n) {
+  d = 2;
+  while d < n {
+    if (n / d) * d == n {
+      return 0;
+    }
+    d = d + 1;
+  }
+  return 1;
+}

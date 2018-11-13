@@ -1,0 +1,2 @@
+Skeleton 5
+ad"Parser"h5Cegp1d"VSIMPL"f3d"Int"d"Stream"d"Lexer"aä¢Arg"h0aä¢StreamWithPos"jh1aä¢Streamable"gp1d"StreamStreamable"gp1e"CoercedStreamable"ad"ParseMain"jh2aÿgp1ÿ=aÿ4gp1ÿ4gp1e"VSIMPLParseFun"N

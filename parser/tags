@@ -1,0 +1,55 @@
+!_TAG_FILE_SORTED	2	/0=unsorted, 1=sorted, 2=foldcase/
+'a	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^                        type 'a item = 'a * pos$/;"	t	language:SML
+aexp	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^    type aexp = aexp$/;"	t	language:SML
+aexp_divide	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^    val aexp_divide = DividedBy$/;"	v	language:SML
+aexp_id	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^    val aexp_id = (fn x => x)$/;"	v	language:SML
+aexp_ident	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^    val aexp_ident = Var$/;"	v	language:SML
+aexp_minus	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^    val aexp_minus = Minus$/;"	v	language:SML
+aexp_number	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^    val aexp_number = AConst$/;"	v	language:SML
+aexp_plus	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^    val aexp_plus = Plus$/;"	v	language:SML
+aexp_times	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^    val aexp_times = Times$/;"	v	language:SML
+Arg	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^    structure Arg = Arg$/;"	r	language:SML
+Arg	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^  structure Arg =$/;"	r	language:SML
+args	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^    val args = (fn x => x)$/;"	v	language:SML
+args_cons	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^    val args_cons = op::$/;"	v	language:SML
+args_empty	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^    fun args_empty () = []$/;"	f	language:SML
+args_one	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^    val args_one = singleton$/;"	v	language:SML
+bexp	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^    type bexp = bexp$/;"	t	language:SML
+bexp_and	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^    val bexp_and = AndAlso$/;"	v	language:SML
+bexp_equal	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^    val bexp_equal = Equals$/;"	v	language:SML
+bexp_false	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^    fun bexp_false () = BConst false$/;"	f	language:SML
+bexp_greater	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^    val bexp_greater = GreaterThan$/;"	v	language:SML
+bexp_id	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^    val bexp_id = (fn x => x)$/;"	v	language:SML
+bexp_less	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^    val bexp_less = LessThan$/;"	v	language:SML
+bexp_not	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^    val bexp_not = Not$/;"	v	language:SML
+bexp_notequal	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^    val bexp_notequal = NotEquals$/;"	v	language:SML
+bexp_or	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^    val bexp_or = OrElse$/;"	v	language:SML
+bexp_true	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^    fun bexp_true () = BConst true$/;"	f	language:SML
+cmd	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^    type cmd = cmd$/;"	t	language:SML
+cmdlist	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^    type cmdlist = cmd list$/;"	t	language:SML
+cmds	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^    val cmds = (fn x => x)$/;"	v	language:SML
+cmds_empty	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^    fun cmds_empty () = []$/;"	f	language:SML
+cmd_assign	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^    val cmd_assign = Assign$/;"	v	language:SML
+cmd_cons	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^    val cmd_cons = op::$/;"	v	language:SML
+cmd_if	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^    fun cmd_if (b, c) = If (b, c, [])$/;"	f	language:SML
+cmd_if_else	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^    val cmd_if_else = If$/;"	v	language:SML
+cmd_one	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^    val cmd_one = singleton$/;"	v	language:SML
+cmd_return	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^    val cmd_return = Return$/;"	v	language:SML
+cmd_while	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^    val cmd_while = While$/;"	v	language:SML
+coerce	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^                        fun coerce (x, _) = x)$/;"	f	language:SML
+error	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^    fun error s =$/;"	f	language:SML
+identlist	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^    type identlist = string list$/;"	t	language:SML
+int	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^    type int = int$/;"	t	language:SML
+Lexer	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^    datatype terminal = datatype Lexer.token$/;"	t	language:SML
+main	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^    val main = (fn x => x)$/;"	v	language:SML
+parse	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^  fun parse s = #1 (ParseMain.parse (Lexer.lex s))$/;"	f	language:SML
+ParseMain	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^  structure ParseMain = VSIMPLParseFun ($/;"	r	language:SML
+Parser	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^structure Parser =$/;"	r	language:SML
+pos	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^  type pos = int$/;"	t	language:SML
+program	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^    type program = program$/;"	t	language:SML
+singleton	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^    fun singleton s = [s]$/;"	f	language:SML
+Streamable	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^     CoercedStreamable (structure Streamable = StreamStreamable$/;"	r	language:SML
+Streamable	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^    structure Streamable = StreamWithPos$/;"	r	language:SML
+StreamWithPos	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^  structure StreamWithPos =$/;"	r	language:SML
+string	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^    type string = string$/;"	t	language:SML
+terminal	/home/crcm/College/sophomore/98317/10-compilation/parser/parser.sml	/^    datatype terminal = datatype Lexer.token$/;"	t	language:SML
