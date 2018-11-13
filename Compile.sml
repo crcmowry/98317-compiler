@@ -49,20 +49,62 @@ end = struct
 
       fun compile_boolean (x : string) (be : V.bexp) : A.instruction list =
         case be of
-             V.BConst true => A.MOV(x, (A.Const 1))::[]
-           | V.BConst false => A.MOV(x, (A.Const 0))::[]
+             V.BConst true => A.MOV(x, A.Const 1)::[]
+           | V.BConst false => A.MOV(x, A.Const 0)::[]
            | V.Equals (a1, a2) => arith x (a1, a2) EQ
-           | V.NotEquals (a1, a2) => compile_boolean (x) (V.Not (V.Equals (a1, a2)))
+           | V.NotEquals (a1, a2) => compile_boolean x (V.Not (V.Equals (a1, a2)))
            | V.LessThan (a1, a2) => arith x (a1, a2) LT
            | V.GreaterThan (a1, a2) => arith x (a2, a1) LT
-           | V.AndAlso (b1, b2) => raise Fail "Unimplemented"
-           | V.OrElse (b1, b2) => raise Fail "Unimplemented"
+           | V.AndAlso (b1, b2) =>
+               let
+                 val t1 = fresh_var ()
+                 val t2 = fresh_var ()
+                 val i1 = compile_boolean t1 b1
+                 val i2 = compile_boolean t2 b2
+                 val l1 = fresh_label ()
+                 val l2 = fresh_label ()
+                 val l3 = fresh_label ()
+                 val l4 = fresh_label ()
+                 val then_case = (A.Label l2)::(A.MOV (x, A.Const 1))::[]
+                 val else_case = (A.Label l3)::(A.MOV (x, A.Const 0))::[]
+               in
+                 i1 @ i2
+                 @ ((A.IF (A.Var t1, l1, l3))
+                 ::(A.Label l1)::(A.IF (A.Var t2, l2, l3))
+                 ::then_case) @ ((A.JUMP l4)::else_case) @ ((A.Label l4)::[])
+               end
+
+           | V.OrElse (b1, b2) =>
+               let
+                 val t1 = fresh_var ()
+                 val t2 = fresh_var ()
+                 val i1 = compile_boolean t1 b1
+                 val i2 = compile_boolean t2 b2
+                 val l1 = fresh_label ()
+                 val l2 = fresh_label ()
+                 val l3 = fresh_label ()
+                 val l4 = fresh_label ()
+                 val then_case = (A.Label l2)::(A.MOV (x, A.Const 1))::[]
+                 val else_case = (A.Label l3)::(A.MOV (x, A.Const 0))::[]
+               in
+                 i1 @ i2
+                 @ ((A.IF (A.Var t1, l2, l1))
+                 ::(A.Label l1)::(A.IF (A.Var t2, l2, l3))
+                 ::then_case) @ ((A.JUMP l4)::else_case) @ ((A.Label l4)::[])
+               end
+
            | V.Not b1 =>
                let
                  val t = fresh_var ()
                  val i = compile_boolean t b1
+                 val l1 = fresh_label ()
+                 val l2 = fresh_label ()
+                 val l3 = fresh_label ()
+                 val then_case = (A.Label l1)::(A.MOV (x, A.Const 0))::[]
+                 val else_case = (A.Label l2)::(A.MOV (x, A.Const 1))::[]
                in
-                 raise Fail "Unimplemented"
+                 i @ ((A.IF (A.Var t, l1, l2))::then_case)
+                   @ ((A.JUMP l3)::else_case) @ ((A.Label l3)::[])
                end
 
       fun compile' (cmds : V.cmd list) : A.instruction list =
@@ -76,6 +118,7 @@ end = struct
                                  let
                                    val l1 = fresh_label ()
                                    val l2 = fresh_label ()
+                                   val l3 = fresh_label ()
                                    val x = fresh_var ()
                                    val ib = compile_boolean x b
                                    val cj = A.IF (A.Var x, l1, l2)
@@ -83,9 +126,24 @@ end = struct
                                    val i2 = compile' c2
                                  in
                                    ib @ (cj::(A.Label l1)::i1)
-                                      @ ((A.Label l2)::i2)
+                                      @ ((A.JUMP l3)::(A.Label l2)::i2)
+                                      @ ((A.Label l3)::[])
                                  end
-                             | V.While (b, c') => raise Fail "unimplemented"
+
+                             | V.While (b, c') =>
+                                 let
+                                   val l1 = fresh_label ()
+                                   val l2 = fresh_label ()
+                                   val l3 = fresh_label ()
+                                   val x = fresh_var ()
+                                   val bi = compile_boolean x b
+                                   val ci = compile' c'
+                                 in
+                                   ((A.Label l1)::bi)
+                                   @ ((A.IF (A.Var x, l2, l3))::(A.Label l2)::ci)
+                                   @ ((A.JUMP l1)::(A.Label l3)::[])
+                                 end
+
                              | V.Return (ae) =>
                                  let
                                    val x = fresh_var ()
